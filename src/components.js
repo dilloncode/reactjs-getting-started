@@ -40,8 +40,16 @@ export const Button = (props) => {
   }
 
   return (
-    <div className="col-2">
+    <div className="col-2 text-center">
       {button}
+      <br /> <br />
+      <button
+        className="btn btn-warning btn-sm"
+        onClick={props.redraw}
+        disabled={props.redraws === 0}
+      >
+        <FontAwesomeIcon icon="sync" /> {props.redraws}
+      </button>
     </div>
   );
 }

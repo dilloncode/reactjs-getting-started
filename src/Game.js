@@ -8,6 +8,7 @@ class Game extends Component {
     randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
     usedNumbers: [],
     answerIsCorrect: null,
+    redraws: 5,
   };
 
   selectNumber = (clickedNumber) => {
@@ -37,7 +38,17 @@ class Game extends Component {
       usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
       selectedNumbers: [],
       answerIsCorrect: null,
-      randomNumberOfStars:  1 + Math.floor(Math.random() * 9),
+      randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+    }));
+  };
+
+  redraw = () => {
+    if (this.state.redraws === 0) return;
+    this.setState(prevState => ({
+      randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+      answerIsCorrect: null,
+      selectedNumbers: [],
+      redraws: prevState.redraws - 1,
     }));
   };
 
@@ -47,6 +58,7 @@ class Game extends Component {
       randomNumberOfStars,
       answerIsCorrect,
       usedNumbers,
+      redraws,
     } = this.state;
     return (
       <div className="container">
@@ -58,6 +70,8 @@ class Game extends Component {
             selectedNumbers={selectedNumbers}
             checkAnswer={this.checkAnswer}
             acceptAnswer={this.acceptAnswer}
+            redraw={this.redraw}
+            redraws={redraws}
             answerIsCorrect={answerIsCorrect}
           />
           <Answer
