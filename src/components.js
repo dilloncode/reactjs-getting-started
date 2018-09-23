@@ -1,9 +1,10 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Stars = (props) => {
     return (
         <div>
-            ...
+            <FontAwesomeIcon icon="star" />
         </div>
     );
 }

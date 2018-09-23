@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import Game from './Game';
 import { Stars, Button, Answer } from './components'
+
+library.add(faStar)
 
 class App extends Component {
   render() {
