@@ -3,11 +3,9 @@ import range from 'lodash/range';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Stars = (props) => {
-  const numberOfStars = 1 + Math.floor(Math.random() * 9);
-
   return (
     <div className="col-5">
-      {range(numberOfStars).map(i =>
+      {range(props.numberOfStars).map(i =>
         <FontAwesomeIcon icon="star" key={i} />
       )}
     </div>
@@ -42,7 +40,13 @@ export const Numbers = (props) => {
     <div className="card text-center">
       <div>
         {Numbers.list.map((number, i) =>
-          <span key={i} className={numberClassName(number)}>{number}</span>
+          <span
+            key={i}
+            className={numberClassName(number)}
+            onClick={() => props.selectNumber(number)}
+          >
+            {number}
+          </span>
         )}
       </div>
     </div>
