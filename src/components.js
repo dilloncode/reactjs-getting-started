@@ -17,7 +17,7 @@ export const Button = (props) => {
   switch (props.answerIsCorrect) {
     case true:
       button =
-        <button className="btn btn-success">
+        <button className="btn btn-success" onClick={props.acceptAnswer}>
           <FontAwesomeIcon icon="check" />
         </button>;
       break;
@@ -60,6 +60,9 @@ export const Answer = (props) => {
 
 export const Numbers = (props) => {
   const numberClassName = (number) => {
+    if (props.usedNumbers.includes(number)) {
+      return 'used';
+    }
     if (props.selectedNumbers.includes(number)) {
       return 'selected';
     }
