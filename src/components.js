@@ -93,3 +93,11 @@ export const Numbers = (props) => {
 }
 
 Numbers.list = range(1, 10);
+
+export const DoneFrame = (props) => {
+  return (
+    <div className="text-center">
+      <h2>{props.doneStatus}</h2>
+    </div>
+  );
+}
