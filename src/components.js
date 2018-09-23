@@ -13,9 +13,35 @@ export const Stars = (props) => {
 }
 
 export const Button = (props) => {
+  let button;
+  switch (props.answerIsCorrect) {
+    case true:
+      button =
+        <button className="btn btn-success">
+          <FontAwesomeIcon icon="check" />
+        </button>;
+      break;
+    case false:
+      button =
+        <button className="btn btn-danger">
+          <FontAwesomeIcon icon="times" />
+        </button>;
+      break;
+    default:
+      button =
+        <button
+          className="btn"
+          onClick={props.checkAnswer}
+          disabled={props.selectedNumbers.length === 0}
+        >
+          =
+        </button>;
+      break;
+  }
+
   return (
     <div className="col-2">
-      <button className="btn" disabled={props.selectedNumbers.length === 0}>=</button>
+      {button}
     </div>
   );
 }
